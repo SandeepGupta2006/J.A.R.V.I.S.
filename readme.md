@@ -3,6 +3,11 @@
 
 Welcome to **JARVIS Mark 21**, a voice-enabled, GUI-based personal AI assistant inspired by Iron Man's JARVIS — reimagined and developed by **Devansh**. This assistant is smart, stylish, and customizable — perfect for everyday automation, chatting, and cool AI experiments!
 
+<div align="center">
+  <img width="49%" src="https://github.com/user-attachments/assets/9fb45a89-6680-4e4d-b9bf-3dad13f2cb50" alt="Jarvis V1" />
+  <img width="49%" src="https://github.com/user-attachments/assets/a3347826-cf75-4a0f-ba32-0c3ebe2ce66c" alt="Jarvis V2" />
+</div>
+
 ---
 
 ## ✨ Features
