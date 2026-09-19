@@ -13,6 +13,7 @@ from core.memory import conversation_history, remember, recall,load_memory
 from core.utils import type_and_speak_text,start_spinner, stop_spinner, update_spinner
 import string
 from features.reminders import add_reminder, add_natural_reminder
+from urllib.parse import quote_plus
 
 from core.plugin_loader import load_plugins
 plugin_registry = load_plugins()#to load all plugin triggers 
@@ -475,15 +476,26 @@ def process_command(command, output_text,language="en"):
     
     elif "search google for" in command:
         query = command.split("search google for")[-1].strip()
+
         reply = f"Searching Google for {query}..."
-        webbrowser.open(f"https://www.google.com/search?q={query}")
+
+        webbrowser.open(f"https://www.google.com/search?q={quote_plus(query)}")
 
     elif "search youtube for" in command:
         query = command.split("search youtube for")[-1].strip()
-        reply = f"Searching YouTube for {query}..."
-        webbrowser.open(
-            f"https://www.youtube.com/results?search_query={query}")
 
+        reply = f"Searching YouTube for {query}..."
+
+        webbrowser.open(
+            f"https://www.youtube.com/results?search_query={quote_plus(query)}")
+
+    
+    
+    
+    
+    
+    
+    
        
     else:
         def handle_gemini_command(prompt):
@@ -556,7 +568,7 @@ def process_command(command, output_text,language="en"):
 
 
     if not handled_by_gemini:# If Gemini didn't handle it, we can safely call lasttasks
-        lasttasks(command, reply, output_text) # Calling the function at last to execute that tasks.
+        lasttasks(command, reply, output_text, language) # Calling the function at last to execute that tasks.
 
 
 
