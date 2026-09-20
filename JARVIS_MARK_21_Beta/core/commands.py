@@ -15,6 +15,7 @@ import string
 from features.reminders import add_reminder, add_natural_reminder
 from urllib.parse import quote_plus
 import psutil
+import pyautogui
 
 from core.plugin_loader import load_plugins
 plugin_registry = load_plugins()#to load all plugin triggers 
@@ -510,7 +511,9 @@ def process_command(command, output_text,language="en"):
         ram = psutil.virtual_memory().percent
         reply = f"CPU usage is at {cpu}%, and RAM usage is at {ram}%."
 
-
+    elif "mute volume" in command or "unmute audio" in command:
+        pyautogui.press("volumemute")
+        reply = "Master audio toggled."
 
     
        
