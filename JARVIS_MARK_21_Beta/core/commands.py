@@ -163,18 +163,21 @@ def process_command(command, output_text,language="en"):
 
     if "search google for" in command:
             query = command.split("search google for")[-1].strip()
-    
-            reply = f"Searching Google for {query}..."
-    
-            webbrowser.open(f"https://www.google.com/search?q={quote_plus(query)}")
+
+            if query:
+                reply = f"Searching Google for {query}..."
+                webbrowser.open(f"https://www.google.com/search?q={quote_plus(query)}")
+            else:
+                reply = "Please tell me what you would like to search on Google"
     
     elif "search youtube for" in command:
             query = command.split("search youtube for")[-1].strip()
-    
-            reply = f"Searching YouTube for {query}..."
-    
-            webbrowser.open(
-                f"https://www.youtube.com/results?search_query={quote_plus(query)}")
+
+            if query:
+                reply = f"Searching YouTube for {query}..."
+                webbrowser.open(f"https://www.youtube.com/results?search_query={quote_plus(query)}")
+            else:
+                reply = "Please tell me what you would like to search on Youtube"
 
     elif "open youtube" in command:
         reply = "Opening YouTube..."
