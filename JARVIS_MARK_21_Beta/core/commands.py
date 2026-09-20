@@ -177,7 +177,7 @@ def process_command(command, output_text,language="en"):
                 reply = f"Searching YouTube for {query}..."
                 webbrowser.open(f"https://www.youtube.com/results?search_query={quote_plus(query)}")
             else:
-                reply = "Please tell me what you would like to search on Youtube"
+                reply = "Please tell me what you would like to search on YouTube"
 
     elif "open youtube" in command:
         reply = "Opening YouTube..."
