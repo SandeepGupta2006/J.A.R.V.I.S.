@@ -160,7 +160,23 @@ def process_command(command, output_text,language="en"):
 
 
     # Process Known Commands
-    if "open youtube" in command:
+
+    if "search google for" in command:
+            query = command.split("search google for")[-1].strip()
+    
+            reply = f"Searching Google for {query}..."
+    
+            webbrowser.open(f"https://www.google.com/search?q={quote_plus(query)}")
+    
+    elif "search youtube for" in command:
+            query = command.split("search youtube for")[-1].strip()
+    
+            reply = f"Searching YouTube for {query}..."
+    
+            webbrowser.open(
+                f"https://www.youtube.com/results?search_query={quote_plus(query)}")
+
+    elif "open youtube" in command:
         reply = "Opening YouTube..."
         webbrowser.open("https://www.youtube.com")
 
@@ -473,21 +489,6 @@ def process_command(command, output_text,language="en"):
         reply = "Opening LinkedIn..."
         
         threading.Thread (target=lambda: webbrowser.open("https://www.linkedin.com"),daemon=True).start()
-    
-    elif "search google for" in command:
-        query = command.split("search google for")[-1].strip()
-
-        reply = f"Searching Google for {query}..."
-
-        webbrowser.open(f"https://www.google.com/search?q={quote_plus(query)}")
-
-    elif "search youtube for" in command:
-        query = command.split("search youtube for")[-1].strip()
-
-        reply = f"Searching YouTube for {query}..."
-
-        webbrowser.open(
-            f"https://www.youtube.com/results?search_query={quote_plus(query)}")
 
     
     
