@@ -14,6 +14,7 @@ from core.utils import type_and_speak_text,start_spinner, stop_spinner, update_s
 import string
 from features.reminders import add_reminder, add_natural_reminder
 from urllib.parse import quote_plus
+import psutil
 
 from core.plugin_loader import load_plugins
 plugin_registry = load_plugins()#to load all plugin triggers 
@@ -493,12 +494,26 @@ def process_command(command, output_text,language="en"):
         
         threading.Thread (target=lambda: webbrowser.open("https://www.linkedin.com"),daemon=True).start()
 
-    
-    
-    
-    
-    
-    
+    elif "battery status" in command or "battery level" in command:
+        battery = psutil.sensors_battery()
+
+        if battery:
+            percent = battery.percent
+            plugged = "plugged in" if battery.power_plugged else "on battery power"
+            reply = f"System battery is at {percent}%, currently {plugged}."
+
+        else:
+            reply = "No battery detected on this system."
+
+    elif "system status" in command or "cpu usage" in command:
+        cpu = psutil.cpu_percent(interval=1)
+
+        ram = psutil.virtual_memory().percent
+
+        reply = f"CPU usage is at {cpu}%, and RAM usage is at {ram}%."
+
+
+
     
        
     else:
