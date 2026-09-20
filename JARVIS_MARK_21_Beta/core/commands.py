@@ -511,9 +511,9 @@ def process_command(command, output_text,language="en"):
         ram = psutil.virtual_memory().percent
         reply = f"CPU usage is at {cpu}%, and RAM usage is at {ram}%."
 
-    elif "mute volume" in command or "unmute audio" in command:
+    elif "toggle mute" in command or "mute volume" in command:
         pyautogui.press("volumemute")
-        reply = "Master audio toggled."
+        reply = "Toggled master volume mute."
 
     
        
