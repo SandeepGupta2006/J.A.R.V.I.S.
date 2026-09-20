@@ -506,7 +506,7 @@ def process_command(command, output_text,language="en"):
             reply = "No battery detected on this system."
 
     elif "system status" in command or "cpu usage" in command:
-        cpu = psutil.cpu_percent(interval=None)
+        cpu = psutil.cpu_percent(interval=0.1)
         ram = psutil.virtual_memory().percent
         reply = f"CPU usage is at {cpu}%, and RAM usage is at {ram}%."
 
