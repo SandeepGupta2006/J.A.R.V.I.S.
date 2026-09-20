@@ -506,11 +506,15 @@ def process_command(command, output_text,language="en"):
             reply = "No battery detected on this system."
 
     elif "system status" in command or "cpu usage" in command:
-        cpu = psutil.cpu_percent(interval=1)
+        def check_system():
+            cpu = psutil.cpu_percent(interval=1)
+            ram = psutil.virtual_memory().percent
+            reply = f"CPU usage is at {cpu}%, and RAM usage is at {ram}%."
 
-        ram = psutil.virtual_memory().percent
+            output_text.after(0, lambda: lasttasks(command, reply, output_text, language))
 
-        reply = f"CPU usage is at {cpu}%, and RAM usage is at {ram}%."
+        threading.Thread(target=check_system, daemon=True).start()
+        return
 
 
 
