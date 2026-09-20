@@ -171,7 +171,7 @@ def process_command(command, output_text,language="en"):
                 reply = "Please tell me what you would like to search on Google"
     
     elif "search youtube for" in command:
-            query = command.split("search youtube for, 1")[1].strip()
+            query = command.split("search youtube for", 1)[1].strip()
 
             if query:
                 reply = f"Searching YouTube for {query}..."
